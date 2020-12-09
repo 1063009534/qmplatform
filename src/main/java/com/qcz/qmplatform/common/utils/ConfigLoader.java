@@ -38,10 +38,10 @@ public class ConfigLoader {
     /**
      * 获取文件上传默认存放路径
      *
-     * @return 文件上传路径，默认 file:/opt/web/file
+     * @return 文件上传路径，默认 /opt/web/file
      */
     public static String getUploadFilePath() {
-        return getStringConfig("UploadFilePath", "file:/opt/web/file");
+        return getStringConfig("UploadFilePath", "/opt/web/file/");
     }
 
 }
