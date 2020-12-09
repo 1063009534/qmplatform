@@ -65,9 +65,9 @@
         <appender-ref ref="CONSOLE"/>
     </root>
 
-    <!--<springProfile name="pro">
+    <springProfile name="pro">
         <root level="DEBUG">
-            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="FILE"/>
         </root>
     </springProfile>
 
@@ -76,6 +76,6 @@
         <root level="DEBUG">
             <appender-ref ref="CONSOLE"/>
         </root>
-    </springProfile>-->
+    </springProfile>
 
 </configuration>
