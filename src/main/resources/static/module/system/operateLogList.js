@@ -11,15 +11,13 @@ layui.use(['table', 'form', 'element', 'layer', 'laydate'], function () {
     let nowDate = date.format('yyyy-MM-dd hh:mm:ss');
     let yestDate = new Date(date.getTime() - 24 * 3600 * 1000).format('yyyy-MM-dd hh:mm:ss');
     laydate.render({
-        elem: '#operateTime',
+        elem: '#operateTime_start',
         type: 'datetime',
-        range: true,
-        value: yestDate + " - " + nowDate,
-        done: function (value, date, endDate) {
-            let start_end = value.split(" - ");
-            $("#operateTime_start").val(start_end[0]);
-            $("#operateTime_end").val(start_end[1]);
-        }
+        value: yestDate
+    });
+    laydate.render({
+        elem: '#operateTime_end',
+        type: 'datetime'
     });
 
     table.render({
@@ -30,8 +28,7 @@ layui.use(['table', 'form', 'element', 'layer', 'laydate'], function () {
         where: {
             orderName: 'operateTime',
             order: 'desc',
-            operateTime_start: yestDate,
-            operateTime_end: nowDate
+            operateTime_start: yestDate
         },
         toolbar: '#toolbar',
         cols: [[

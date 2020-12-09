@@ -39,11 +39,15 @@
                 </div>
                 <div class="layui-inline">
                     <label class="layui-form-label">操作时间</label>
-                    <div class="layui-input-block" style="width: 300px">
-                        <input type="text" class="layui-input" id="operateTime" placeholder=" - " autocomplete="off">
-                        <input type="hidden" id="operateTime_start" name="operateTime_start">
-                        <input type="hidden" id="operateTime_end" name="operateTime_end">
-                    </div>
+                </div>
+                <div class="layui-inline">
+                    <input type="text" class="layui-input" id="operateTime_start" name="operateTime_start">
+                </div>
+                <div class="layui-inline">
+                    -
+                </div>
+                <div class="layui-inline">
+                    <input type="text" class="layui-input" id="operateTime_end" name="operateTime_end">
                 </div>
             </span>
             <#--搜索栏-->
