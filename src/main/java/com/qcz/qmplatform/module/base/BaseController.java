@@ -1,8 +1,8 @@
 package com.qcz.qmplatform.module.base;
 
 import com.qcz.qmplatform.common.bean.ResponseResult;
+import com.qcz.qmplatform.common.utils.ConfigLoader;
 import com.qcz.qmplatform.common.utils.DateUtils;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -18,7 +18,7 @@ public class BaseController {
     @PostMapping("/upload")
     @ResponseBody
     public ResponseResult<Map<String, String>> upload(MultipartFile file) throws IOException {
-        File targetFileFolder = new File("/opt/web/file/");
+        File targetFileFolder = new File(ConfigLoader.getUploadFilePath());
         if (!targetFileFolder.exists()) {
             targetFileFolder.mkdirs();
         }
