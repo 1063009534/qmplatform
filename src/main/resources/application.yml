@@ -32,7 +32,3 @@ pagehelper:
 logging:
   level:
     com.qcz.qmplatform.module.**.mapper: debug
-
-# 自定义属性
-custom:
-  upload-file-path: file:D:\workspace\file
