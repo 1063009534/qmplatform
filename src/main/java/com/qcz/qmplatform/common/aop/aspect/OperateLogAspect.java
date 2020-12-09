@@ -72,12 +72,14 @@ public class OperateLogAspect {
     public Object operateLogAround(ProceedingJoinPoint joinPoint) throws Throwable {
         Class<?> targetClass = joinPoint.getTarget().getClass();
         final HttpServletRequest request = getHttpServletRequest();
+        String requestUrl = request.getServletPath();
+        String ipAddress = HttpServletUtils.getIpAddress(request);
         Object proceed;
         User currentUser = SubjectUtils.getUser();
         try {
             proceed = joinPoint.proceed();
             executorService.submit(() -> {
-                insertOperateLog(1, currentUser, null, request, joinPoint, targetClass);
+                insertOperateLog(1, currentUser, null, requestUrl, ipAddress, joinPoint, targetClass);
             });
         } catch (Exception e) {// 原逻辑程序有异常，这里抛回，并修改操作状态
             throw new Exception(e);
@@ -95,10 +97,12 @@ public class OperateLogAspect {
     public void saveExceptionLog(JoinPoint joinPoint, Throwable e) {
         Class<?> targetClass = joinPoint.getTarget().getClass();
         final HttpServletRequest request = getHttpServletRequest();
+        String requestUrl = request.getServletPath();
+        String ipAddress = HttpServletUtils.getIpAddress(request);
         User currentUser = SubjectUtils.getUser();
         executorService.submit(() -> {
             String stackTrace = stackTraceToString(e.getClass().getName(), e.getMessage(), e.getStackTrace());
-            insertOperateLog(0, currentUser, stackTrace, request, joinPoint, targetClass);
+            insertOperateLog(0, currentUser, stackTrace, requestUrl, ipAddress, joinPoint, targetClass);
         });
 
     }
@@ -109,13 +113,12 @@ public class OperateLogAspect {
      * @param operateStatus 操作状态
      * @param currentUser   当前操作人
      * @param expMsg        异常信息
-     * @param request       request请求
+     * @param requestUrl    请求路径
+     * @param ipAddress     请求ip地址
      * @param joinPoint     切点
      * @param targetClass   目标类Class
      */
-    private void insertOperateLog(int operateStatus, User currentUser, String expMsg, HttpServletRequest request, JoinPoint joinPoint, Class<?> targetClass) {
-        String requestUrl = request.getServletPath();
-        String ipAddress = HttpServletUtils.getIpAddress(request);
+    private void insertOperateLog(int operateStatus, User currentUser, String expMsg, String requestUrl, String ipAddress, JoinPoint joinPoint, Class<?> targetClass) {
         RecordLog recordLog = ((MethodSignature) joinPoint.getSignature()).getMethod().getAnnotation(RecordLog.class);
         String moduleName = null;
         String description = null;
