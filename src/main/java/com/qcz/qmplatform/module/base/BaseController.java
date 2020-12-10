@@ -3,6 +3,8 @@ package com.qcz.qmplatform.module.base;
 import com.qcz.qmplatform.common.bean.ResponseResult;
 import com.qcz.qmplatform.common.utils.ConfigLoader;
 import com.qcz.qmplatform.common.utils.DateUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
@@ -14,6 +16,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class BaseController {
+
+    protected static Logger logger = null;
+
+    public BaseController() {
+        logger = LoggerFactory.getLogger(this.getClass());
+    }
 
     @PostMapping("/upload")
     @ResponseBody
