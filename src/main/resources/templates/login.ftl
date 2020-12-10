@@ -25,11 +25,7 @@
         </form>
         <div class="layui-trans user-login-footer">
             <p>
-                © 2020 <a href="http://www.zhongcenter.cn" target="_blank">www.zhongcenter.cn</a>
-            </p>
-            <p>
-                <span><a href="https://github.com/qcz-left/slv-init-manage" target="_blank">GitHub</a></span>
-                <span><a href="http://www.zhongcenter.cn" target="_blank">个人博客</a></span>
+                © 2020 <span><a href="https://github.com/qcz-left/qmplatform" target="_blank">GitHub</a></span>
             </p>
         </div>
     </div>

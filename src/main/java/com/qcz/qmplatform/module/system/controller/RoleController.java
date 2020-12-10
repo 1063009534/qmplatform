@@ -9,6 +9,7 @@ import com.qcz.qmplatform.common.bean.PageResult;
 import com.qcz.qmplatform.common.bean.PageResultHelper;
 import com.qcz.qmplatform.common.bean.PrivCode;
 import com.qcz.qmplatform.common.bean.ResponseResult;
+import com.qcz.qmplatform.module.base.BaseController;
 import com.qcz.qmplatform.module.system.domain.Role;
 import com.qcz.qmplatform.module.system.service.RoleService;
 import com.qcz.qmplatform.module.system.vo.RolePermissionVO;
@@ -38,7 +39,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/role")
 @Module("角色管理")
-public class RoleController {
+public class RoleController extends BaseController {
 
     private static final String PATH_PREFIX = "/module/system/";
 

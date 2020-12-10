@@ -96,6 +96,7 @@ public class ShiroConfig {
         filterChainDefinitionMap.put("/logout", "anon");
         filterChainDefinitionMap.put("/favicon.ico", "anon");
         filterChainDefinitionMap.put("/static/**", "anon");
+        filterChainDefinitionMap.put("/druid/**", "anon");
         filterChainDefinitionMap.put("/**/exportData", "anon");
         filterChainDefinitionMap.put("/**", "authc");
         Map<String, Filter> loginFilter = new HashMap<>();

@@ -5,6 +5,7 @@ import com.qcz.qmplatform.common.bean.PageRequest;
 import com.qcz.qmplatform.common.bean.PageResult;
 import com.qcz.qmplatform.common.bean.PageResultHelper;
 import com.qcz.qmplatform.common.bean.ResponseResult;
+import com.qcz.qmplatform.module.base.BaseController;
 import com.qcz.qmplatform.module.system.domain.Button;
 import com.qcz.qmplatform.module.system.service.ButtonService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,7 +32,7 @@ import java.util.List;
  */
 @Controller
 @RequestMapping("/button")
-public class ButtonController {
+public class ButtonController extends BaseController {
 
     private static final String PREFIX = "/module/system/button/";
 

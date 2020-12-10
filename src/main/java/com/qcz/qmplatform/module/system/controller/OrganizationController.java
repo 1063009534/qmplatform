@@ -5,6 +5,7 @@ import com.qcz.qmplatform.common.aop.annotation.Module;
 import com.qcz.qmplatform.common.aop.annotation.RecordLog;
 import com.qcz.qmplatform.common.aop.assist.OperateType;
 import com.qcz.qmplatform.common.bean.ResponseResult;
+import com.qcz.qmplatform.module.base.BaseController;
 import com.qcz.qmplatform.module.system.domain.Organization;
 import com.qcz.qmplatform.module.system.po.OrgTree;
 import com.qcz.qmplatform.module.system.service.OrganizationService;
@@ -33,7 +34,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/organization")
 @Module("组织机构管理")
-public class OrganizationController {
+public class OrganizationController extends BaseController {
 
     private static final String PREFIX = "/module/system/";
 

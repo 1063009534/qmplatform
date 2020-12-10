@@ -6,6 +6,7 @@ import com.qcz.qmplatform.common.aop.annotation.RecordLog;
 import com.qcz.qmplatform.common.aop.assist.OperateType;
 import com.qcz.qmplatform.common.bean.PrivCode;
 import com.qcz.qmplatform.common.bean.ResponseResult;
+import com.qcz.qmplatform.module.base.BaseController;
 import com.qcz.qmplatform.module.system.po.MenuTree;
 import com.qcz.qmplatform.module.system.po.Permission;
 import com.qcz.qmplatform.module.system.service.MenuService;
@@ -35,7 +36,7 @@ import java.util.List;
 @Controller
 @RequestMapping("/menu")
 @Module("菜单管理")
-public class MenuController {
+public class MenuController extends BaseController {
 
     private static final String PATH_PREFIX = "/module/system/";
 

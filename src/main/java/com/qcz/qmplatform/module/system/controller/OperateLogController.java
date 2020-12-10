@@ -7,6 +7,7 @@ import com.qcz.qmplatform.common.bean.PageResult;
 import com.qcz.qmplatform.common.bean.PageResultHelper;
 import com.qcz.qmplatform.common.bean.ResponseResult;
 import com.qcz.qmplatform.common.utils.StringUtils;
+import com.qcz.qmplatform.module.base.BaseController;
 import com.qcz.qmplatform.module.system.domain.OperateLog;
 import com.qcz.qmplatform.module.system.service.OperateLogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,7 +28,7 @@ import java.sql.Timestamp;
  */
 @Controller
 @RequestMapping("/operate-log")
-public class OperateLogController {
+public class OperateLogController extends BaseController {
 
     private static final String PREFIX = "/module/system/";
 
@@ -43,6 +44,7 @@ public class OperateLogController {
     @ResponseBody
     public ResponseResult<PageResult> getLogList(PageRequest pageRequest, OperateLog log, String operateTime_start, String operateTime_end) {
         QueryWrapper<OperateLog> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq(log.getDescription() != null, "description", log.getDescription());
         queryWrapper.eq(log.getOperateType() != null, "operate_type", log.getOperateType());
         queryWrapper.eq(log.getOperateStatus() != null, "operate_status", log.getOperateStatus());
         if (StringUtils.isNotBlank(operateTime_start)) {
