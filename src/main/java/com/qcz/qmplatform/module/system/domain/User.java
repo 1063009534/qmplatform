@@ -4,6 +4,9 @@ import com.baomidou.mybatisplus.annotation.TableField;
 import com.baomidou.mybatisplus.annotation.TableId;
 import com.baomidou.mybatisplus.annotation.TableName;
 
+import javax.validation.constraints.Max;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Pattern;
 import java.io.Serializable;
 import java.sql.Timestamp;
 
@@ -30,18 +33,22 @@ public class User implements Serializable {
      * 密码
      */
     @TableField("password")
+    @NotBlank(message = "密码不能为空")
+    @Pattern(regexp = "^[\\S]{5,12}$", message = "密码必须5到12位，且不能出现空格")
     private String password;
 
     /**
      * 用户名
      */
     @TableField("username")
+    @NotBlank(message = "用户名不能为空")
     private String username;
 
     /**
      * 登录名
      */
     @TableField("loginname")
+    @NotBlank(message = "登录户名不能为空")
     private String loginname;
 
     /**
@@ -72,6 +79,7 @@ public class User implements Serializable {
      * 手机号码
      */
     @TableField("phone")
+    @NotBlank(message = "手机号码不能为空")
     private String phone;
 
     /**

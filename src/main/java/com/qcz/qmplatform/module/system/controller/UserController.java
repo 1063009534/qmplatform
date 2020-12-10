@@ -31,6 +31,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Map;
@@ -130,7 +131,7 @@ public class UserController extends BaseController {
     @ResponseBody
     @RequiresPermissions(PrivCode.BTN_CODE_USER_SAVE)
     @RecordLog(type = OperateType.INSERT, description = "新增用户")
-    public ResponseResult<?> addUser(@RequestBody UserVO user) {
+    public ResponseResult<?> addUser(@Valid @RequestBody UserVO user) {
         if (userService.insertUser(user)) {
             return ResponseResult.ok();
         }
@@ -141,7 +142,7 @@ public class UserController extends BaseController {
     @ResponseBody
     @RequiresPermissions(PrivCode.BTN_CODE_USER_SAVE)
     @RecordLog(type = OperateType.UPDATE, description = "修改用户")
-    public ResponseResult<?> updateUser(@RequestBody UserVO user) {
+    public ResponseResult<?> updateUser(@Valid @RequestBody UserVO user) {
         if (userService.updateUser(user)) {
             return ResponseResult.ok();
         }
@@ -157,7 +158,7 @@ public class UserController extends BaseController {
     @RequiresPermissions(PrivCode.BTN_CODE_USER_SAVE)
     @ResponseBody
     @RecordLog(type = OperateType.UPDATE, description = "修改当前用户基本资料")
-    public ResponseResult<?> saveCurrentUserInfo(@RequestBody CurrentUserInfoVO user) {
+    public ResponseResult<?> saveCurrentUserInfo(@Valid @RequestBody CurrentUserInfoVO user) {
         if (userService.saveCurrentUserInfo(user)) {
             return ResponseResult.ok();
         }
@@ -173,7 +174,7 @@ public class UserController extends BaseController {
     @RequiresPermissions(PrivCode.BTN_CODE_USER_SAVE)
     @ResponseBody
     @RecordLog(type = OperateType.UPDATE, description = "修改当前用户密码")
-    public ResponseResult<?> changeCurrentUserPwd(@RequestBody PasswordVO passwordVO) {
+    public ResponseResult<?> changeCurrentUserPwd(@Valid @RequestBody PasswordVO passwordVO) {
         User user = userService.getById(SubjectUtils.getUserId());
         // 比较原密码是否填写正确
         if (!user.getPassword().equals(SubjectUtils.md5Encrypt(user.getLoginname(), passwordVO.getPassword()))) {
