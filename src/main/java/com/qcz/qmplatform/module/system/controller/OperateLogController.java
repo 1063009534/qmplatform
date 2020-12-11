@@ -44,7 +44,7 @@ public class OperateLogController extends BaseController {
     @ResponseBody
     public ResponseResult<PageResult> getLogList(PageRequest pageRequest, OperateLog log, String operateTime_start, String operateTime_end) {
         QueryWrapper<OperateLog> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq(log.getDescription() != null, "description", log.getDescription());
+        queryWrapper.like(StringUtils.isNotBlank(log.getDescription()), "description", log.getDescription());
         queryWrapper.eq(log.getOperateType() != null, "operate_type", log.getOperateType());
         queryWrapper.eq(log.getOperateStatus() != null, "operate_status", log.getOperateStatus());
         if (StringUtils.isNotBlank(operateTime_start)) {

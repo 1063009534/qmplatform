@@ -70,7 +70,6 @@ public class OperateLogAspect {
      */
     @Around(value = "operateLogPointcut()")
     public Object operateLogAround(ProceedingJoinPoint joinPoint) throws Throwable {
-        Class<?> targetClass = joinPoint.getTarget().getClass();
         final HttpServletRequest request = getHttpServletRequest();
         String requestUrl = request.getServletPath();
         String ipAddress = HttpServletUtils.getIpAddress(request);
@@ -79,7 +78,7 @@ public class OperateLogAspect {
         try {
             proceed = joinPoint.proceed();
             executorService.submit(() -> {
-                insertOperateLog(1, currentUser, null, requestUrl, ipAddress, joinPoint, targetClass);
+                insertOperateLog(1, currentUser, null, requestUrl, ipAddress, joinPoint);
             });
         } catch (Exception e) {// 原逻辑程序有异常，这里抛回，并修改操作状态
             throw new Exception(e);
@@ -95,14 +94,13 @@ public class OperateLogAspect {
      */
     @AfterThrowing(pointcut = "operateExceptionLogPointCut()", throwing = "e")
     public void saveExceptionLog(JoinPoint joinPoint, Throwable e) {
-        Class<?> targetClass = joinPoint.getTarget().getClass();
         final HttpServletRequest request = getHttpServletRequest();
         String requestUrl = request.getServletPath();
         String ipAddress = HttpServletUtils.getIpAddress(request);
         User currentUser = SubjectUtils.getUser();
         executorService.submit(() -> {
             String stackTrace = stackTraceToString(e.getClass().getName(), e.getMessage(), e.getStackTrace());
-            insertOperateLog(0, currentUser, stackTrace, requestUrl, ipAddress, joinPoint, targetClass);
+            insertOperateLog(0, currentUser, stackTrace, requestUrl, ipAddress, joinPoint);
         });
 
     }
@@ -116,9 +114,8 @@ public class OperateLogAspect {
      * @param requestUrl    请求路径
      * @param ipAddress     请求ip地址
      * @param joinPoint     切点
-     * @param targetClass   目标类Class
      */
-    private void insertOperateLog(int operateStatus, User currentUser, String expMsg, String requestUrl, String ipAddress, JoinPoint joinPoint, Class<?> targetClass) {
+    private void insertOperateLog(int operateStatus, User currentUser, String expMsg, String requestUrl, String ipAddress, JoinPoint joinPoint) {
         RecordLog recordLog = ((MethodSignature) joinPoint.getSignature()).getMethod().getAnnotation(RecordLog.class);
         String moduleName = null;
         String description = null;
@@ -143,7 +140,7 @@ public class OperateLogAspect {
                     description = currentUser.getUsername() + " 退出了系统";
                     break;
                 default:
-                    Module module = targetClass.getAnnotation(Module.class);
+                    Module module = joinPoint.getTarget().getClass().getAnnotation(Module.class);
                     if (module != null) {
                         moduleName = module.value();
                     }
