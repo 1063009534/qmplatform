@@ -9,6 +9,8 @@ import com.tencentcloudapi.common.profile.HttpProfile;
 import com.tencentcloudapi.sms.v20190711.SmsClient;
 import com.tencentcloudapi.sms.v20190711.models.SendSmsRequest;
 import com.tencentcloudapi.sms.v20190711.models.SendSmsResponse;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.Collection;
 import java.util.List;
@@ -17,6 +19,8 @@ import java.util.List;
  * 腾讯云短信服务
  */
 public class TencentCloudSmsNotifyService implements INotifyService {
+
+    private static final Logger LOGGER = LoggerFactory.getLogger(TencentCloudSmsNotifyService.class);
 
     private SmsConfig smsConfig;
 
@@ -72,8 +76,7 @@ public class TencentCloudSmsNotifyService implements INotifyService {
             req.setSign(smsConfig.getSign());
 
             /* 国际/港澳台短信 senderid: 国内短信填空，默认未开通，如需开通请联系 [sms helper] */
-            /*String senderid = "xxx";
-            req.setSenderId(senderid);*/
+            req.setSenderId("");
 
             /* 用户的 session 内容: 可以携带用户侧 ID 等上下文信息，server 会原样返回 */
             /*String session = "xxx";
@@ -100,10 +103,10 @@ public class TencentCloudSmsNotifyService implements INotifyService {
             SendSmsResponse res = client.SendSms(req);
 
             // 输出 JSON 格式的字符串回包
-            System.out.println(SendSmsResponse.toJsonString(res));
+            LOGGER.info(SendSmsResponse.toJsonString(res));
 
             // 可以取出单个值，您可以通过官网接口文档或跳转到 response 对象的定义处查看返回字段的定义
-            System.out.println(res.getRequestId());
+            LOGGER.info(res.getRequestId());
 
         } catch (TencentCloudSDKException e) {
             e.printStackTrace();
