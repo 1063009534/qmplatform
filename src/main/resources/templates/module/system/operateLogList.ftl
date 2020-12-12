@@ -9,6 +9,12 @@
             <#--搜索条件-->
             <span class="search-where">
                 <div class="layui-inline">
+                    <label class="layui-form-label">操作人</label>
+                    <div class="layui-input-block" style="width: 120px">
+                        <input type="text" name="operateUserName" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+                <div class="layui-inline">
                     <label class="layui-form-label">描述内容</label>
                     <div class="layui-input-block" style="width: 120px">
                         <input type="text" name="description" autocomplete="off" class="layui-input">

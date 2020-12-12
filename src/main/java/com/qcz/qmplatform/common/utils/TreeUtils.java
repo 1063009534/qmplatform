@@ -20,10 +20,11 @@ public class TreeUtils {
         }
 
         // 递归构建树形数据
-        return buildTreeData(topNodes, trees, 1);
+        return buildTreeData(topNodes, trees, 0);
     }
 
     private static <T extends Tree> List<T> buildTreeData(List<T> parentNodes, List<T> trees, int level) {
+        level++;
         for (T parentNode : parentNodes) {
             String parentId = parentNode.getId();
             List<T> childes = new ArrayList<>();
@@ -36,9 +37,8 @@ public class TreeUtils {
             }
             // 如果有子节点，执行递归查询
             if (childes.size() > 0) {
-                level++;
                 parentNode.setHasChild(true);
-                parentNode.setChildes(buildTreeData(childes, trees, level++));
+                parentNode.setChildes(buildTreeData(childes, trees, level));
             } else {
                 parentNode.setChildes(null);
             }

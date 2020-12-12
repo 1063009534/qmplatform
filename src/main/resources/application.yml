@@ -3,13 +3,13 @@ server:
   servlet:
     context-path: /qmplatform
 
+
 spring:
+  profiles:
+    active: dev
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://127.0.0.1:5432/qmplatform_single
-    username: postgres
-    password: ENC(D9fe9pzb1/BZ7cdXkAV4tyO8I+WJqKvR)
     #Spring Boot 默认是不注入这些属性值的，需要自己绑定
     #druid 数据源专有配置
     initialSize: 5
@@ -37,8 +37,6 @@ spring:
   mail:
     host: smtp.163.com
     port: 25
-    username: your_mail_addr@163.com
-    password: ENC(your_enc_password)
     default-encoding: utf-8
     properties:
       mail:
