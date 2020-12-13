@@ -1,11 +1,17 @@
 package com.qcz.qmplatform.common.utils;
 
+import cn.hutool.core.io.FileUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.io.*;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
-public class FileUtils extends org.apache.commons.io.FileUtils {
+public class FileUtils extends FileUtil {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(FileUtils.class);
 
@@ -64,5 +70,15 @@ public class FileUtils extends org.apache.commons.io.FileUtils {
             CloseUtils.close(fis);
         }
         return null;
+    }
+
+    /**
+     * 获取真实文件路径
+     *
+     * @param filePath 以/file/开头的虚拟文件路径
+     * @return the real path of file
+     */
+    public static String getRealFilePath(String filePath) {
+        return ConfigLoader.getUploadFilePath() + filePath.substring(6);
     }
 }

@@ -82,6 +82,16 @@ public class HttpServletUtils {
     }
 
     /**
+     * 获取请求完整路径
+     *
+     * @param request the request
+     * @return the full request url
+     */
+    public static String getFullRequestUrl(HttpServletRequest request) {
+        return getLocalIpAddress() + ":" + request.getServerPort() + request.getContextPath();
+    }
+
+    /**
      * 获取ip地址
      *
      * @param request

@@ -36,12 +36,21 @@ public class ConfigLoader {
     }
 
     /**
-     * 获取文件上传默认存放路径
+     * 获取文件上传存放路径
      *
-     * @return 文件上传路径，默认 /opt/web/file
+     * @return 文件上传路径，默认 /opt/web/file/
      */
     public static String getUploadFilePath() {
         return getStringConfig("UploadFilePath", "/opt/web/file/");
+    }
+
+    /**
+     * 获取文件下载存放路径
+     *
+     * @return 文件上传路径，默认 /opt/web/download/
+     */
+    public static String getDownloadFilePath() {
+        return getStringConfig("DownloadFilePath", "/opt/web/download/");
     }
 
 }

@@ -6,7 +6,7 @@ server:
 
 spring:
   profiles:
-    active: dev
+    active: pro
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: org.postgresql.Driver
@@ -32,8 +32,6 @@ spring:
     view:
       prefix: classpath:/templates/
       suffix: .ftl
-  freemarker:
-    request-context-attribute: requestContext
   mail:
     host: smtp.163.com
     port: 25

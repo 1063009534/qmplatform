@@ -199,7 +199,7 @@ public class UserController extends BaseController {
         // 将文件路径保存到数据库
         if (upload.isOk()) {
             User user = userService.getById(SubjectUtils.getUserId());
-            user.setPhotoPath(upload.getData().get("fileName"));
+            user.setPhotoPath(upload.getData().get("filePath"));
             userService.updateById(user);
             SubjectUtils.setUser(user);
         }

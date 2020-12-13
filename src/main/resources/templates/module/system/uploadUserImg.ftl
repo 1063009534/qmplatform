@@ -9,8 +9,8 @@
                 <i class="layui-icon"></i>
                 <p>点击上传，或将图片拖拽到此处</p>
             </div>
-            <div class="layui-input-inline layui-hide" id="userImgView" style="top: 50px;">
-                <img src="" style="max-width: 196px">
+            <div class="layui-input-inline layui-hide" id="userImgView">
+                <img src="" style="max-width: 154px; max-height: 154px;">
             </div>
         </div>
         <div class="layui-form-item">
@@ -44,7 +44,7 @@
                 LayerUtil.respMsg(result, '上传成功', '上传失败', function (data) {
                     top.layer.closeAll();
                     // 替换右上角的头像
-                    top.$("#userImg").attr("src", ctx + data.fileName);
+                    top.$("#userImg").attr("src", ctx + data.filePath);
                 })
             },
             error: function () {

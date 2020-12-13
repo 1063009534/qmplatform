@@ -2,6 +2,7 @@
 <script type="text/javascript">
     let ctx = "${requestContext.contextPath}";
 </script>
+<#include './priv_code.ftl'>
 <head>
     <script type="text/javascript" src="${ctx}/static/plugin/jquery/jquery-2.2.2.min.js"></script>
     <link rel="stylesheet" href="${ctx}/static/plugin/layui/css/layui.css"/>

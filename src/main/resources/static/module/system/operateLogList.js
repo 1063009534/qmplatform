@@ -8,7 +8,6 @@ layui.use(['table', 'form', 'element', 'layer', 'laydate'], function () {
     let layFilter = 'log';
 
     let date = new Date();
-    let nowDate = date.format('yyyy-MM-dd hh:mm:ss');
     let yestDate = new Date(date.getTime() - 24 * 3600 * 1000).format('yyyy-MM-dd hh:mm:ss');
     laydate.render({
         elem: '#operateTime_start',
@@ -30,7 +29,6 @@ layui.use(['table', 'form', 'element', 'layer', 'laydate'], function () {
             order: 'desc',
             operateTime_start: yestDate
         },
-        toolbar: '#toolbar',
         cols: [[
             {type: 'numbers'},
             {field: 'operateModule', title: '操作模块', width: '10%', sort: true},

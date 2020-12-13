@@ -6,39 +6,9 @@ package com.qcz.qmplatform.common.bean;
 public class PrivCode {
 
     /**
-     * 电放锅的子菜单
+     * 系统管理
      */
-    public static final String MENU_CODE_CHILD = "child";
-
-    /**
-     * 用户管理
-     */
-    public static final String MENU_CODE_USER = "user";
-
-    /**
-     * 角色管理
-     */
-    public static final String MENU_CODE_ROLE = "role";
-
-    /**
-     * 组织机构管理
-     */
-    public static final String MENU_CODE_DEPT = "dept";
-
-    /**
-     * 图标管理
-     */
-    public static final String MENU_CODE_ICON = "icon";
-
-    /**
-     * 菜单管理
-     */
-    public static final String MENU_CODE_MENU = "menu";
-
-    /**
-     * 操作日志
-     */
-    public static final String MENU_CODE_OPERATE = "operate";
+    public static final String MENU_CODE_SYSTEM = "system";
 
     /**
      * 测试404
@@ -51,19 +21,39 @@ public class PrivCode {
     public static final String MENU_CODE_CESHI500 = "ceshi500";
 
     /**
-     * 系统管理
+     * 操作日志
      */
-    public static final String MENU_CODE_SYSTEM = "system";
+    public static final String MENU_CODE_OPERATE = "operate";
 
     /**
-     * button1
+     * 图标管理
      */
-    public static final String BTN_CODE_6 = "6";
+    public static final String MENU_CODE_ICON = "icon";
 
     /**
-     * name4的按钮
+     * 用户管理
      */
-    public static final String BTN_CODE_NAME_BTN = "name-btn";
+    public static final String MENU_CODE_USER = "user";
+
+    /**
+     * 菜单管理
+     */
+    public static final String MENU_CODE_MENU = "menu";
+
+    /**
+     * 角色管理
+     */
+    public static final String MENU_CODE_ROLE = "role";
+
+    /**
+     * 组织机构管理
+     */
+    public static final String MENU_CODE_ORG = "org";
+
+    /**
+     * 文件管理
+     */
+    public static final String MENU_CODE_FILE = "file";
 
     /**
      * 删除用户

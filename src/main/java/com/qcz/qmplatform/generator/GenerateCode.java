@@ -48,10 +48,10 @@ public class GenerateCode {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:postgresql://127.0.0.1:5432/qmplatform_single");
+        dsc.setUrl("jdbc:postgresql://111.230.115.170:5432/qmplatform_single");
         dsc.setDriverName("org.postgresql.Driver");
         dsc.setUsername("postgres");
-        dsc.setPassword("postgres");
+        dsc.setPassword("qcz_left.123");
         mpg.setDataSource(dsc);
 
         // 包配置
@@ -68,10 +68,10 @@ public class GenerateCode {
 //		strategy.setSuperEntityClass("com.baomidou.ant.common.BaseEntity");
         strategy.setEntityLombokModel(false);
         strategy.setRestControllerStyle(false);
-//		strategy.setSuperControllerClass("com.baomidou.ant.common.BaseController");
+		strategy.setSuperControllerClass("com.qcz.qmplatform.module.base.BaseController");
         strategy.setInclude(scanner("表名，多个英文逗号分割").split(","));
         strategy.setControllerMappingHyphenStyle(true);
-        strategy.setTablePrefix("sys_");
+        strategy.setTablePrefix("tbl_");
         strategy.setEntityTableFieldAnnotationEnable(true);
         mpg.setStrategy(strategy);
 
