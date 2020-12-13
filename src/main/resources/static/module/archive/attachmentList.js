@@ -28,13 +28,7 @@ layui.use(['table', 'form', 'element', 'layer'], function () {
                 }
             },
             {field: 'description', title: '文件说明'},
-            {
-                fixed: 'right', title: '操作', align: 'center', templet: function () {
-                    let add = '<button class="layui-btn layui-btn-sm"  lay-event="download"><i class="layui-icon layui-icon-download-circle"></i>下载</button>';
-                    let del = '<button class="layui-btn layui-btn-sm layui-btn-danger" lay-event="delete"><i class="layui-icon layui-icon-delete"></i>删除</button>';
-                    return add + del;
-                }
-            }
+            {fixed: 'right', title: '操作', align: 'center', templet: '#operator'}
         ]]
     });
 

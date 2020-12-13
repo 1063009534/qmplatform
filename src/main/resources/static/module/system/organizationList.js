@@ -22,13 +22,7 @@ layui.use(['treetable', 'table', 'form', 'element', 'layer'], function () {
             cols: [[
                 {field: 'name', title: '组织机构名称', width: '20%'},
                 {field: 'code', title: '组织机构编码', width: '10%'},
-                {
-                    fixed: 'right', title: '操作', align: 'center', templet: function () {
-                        let add = '<button class="layui-btn layui-btn-sm"  lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</button>';
-                        let del = '<button class="layui-btn layui-btn-sm layui-btn-danger" lay-event="delete"><i class="layui-icon layui-icon-delete"></i>删除</button>';
-                        return add + del;
-                    }
-                }
+                {fixed: 'right', title: '操作', align: 'center', templet: '#operator'}
             ]]
         });
     }

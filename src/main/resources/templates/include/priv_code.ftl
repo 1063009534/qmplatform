@@ -37,4 +37,10 @@
 'BTN_CODE_ORG_SAVE': 'org-save',
 <#--删除组织机构-->
 'BTN_CODE_ORG_DELETE': 'org-delete',
+<#--上传文件-->
+'BTN_CODE_FILE_UPLOAD': 'file-upload',
+<#--删除文件-->
+'BTN_CODE_FILE_DELETE': 'file-delete',
+<#--无实际意义-->
+'INSTANCE': 'instance'
 }>

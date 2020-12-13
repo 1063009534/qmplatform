@@ -16,14 +16,7 @@ layui.use(['table', 'form', 'element', 'layer'], function () {
             {field: 'roleName', title: '角色名称', width: '10%', sort: true},
             {field: 'roleSign', title: '角色标识', width: '10%', sort: true},
             {field: 'remark', title: '描述', width: '20%'},
-            {
-                fixed: 'right', title: '操作', align: 'center', templet: function () {
-                    let allot = '<button class="layui-btn layui-btn-sm layui-btn-warm"  lay-event="allot"><i class="layui-icon layui-icon-auz"></i>分配权限</button>';
-                    let add = '<button class="layui-btn layui-btn-sm"  lay-event="edit"><i class="layui-icon layui-icon-edit"></i>编辑</button>';
-                    let del = '<button class="layui-btn layui-btn-sm layui-btn-danger" lay-event="delete"><i class="layui-icon layui-icon-delete"></i>删除</button>';
-                    return allot + add + del;
-                }
-            }
+            {fixed: 'right', title: '操作', align: 'center', templet: '#operator'}
         ]]
     });
 

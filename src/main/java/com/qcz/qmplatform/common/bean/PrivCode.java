@@ -100,4 +100,14 @@ public class PrivCode {
      */
     public static final String BTN_CODE_ORG_DELETE = "org-delete";
 
+    /**
+     * 上传文件
+     */
+    public static final String BTN_CODE_FILE_UPLOAD = "file-upload";
+
+    /**
+     * 删除文件
+     */
+    public static final String BTN_CODE_FILE_DELETE = "file-delete";
+
 }

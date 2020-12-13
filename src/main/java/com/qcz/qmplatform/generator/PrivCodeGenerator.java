@@ -29,7 +29,8 @@ public class PrivCodeGenerator {
         cfg.setDirectoryForTemplateLoading(new ClassPathResource("/ftl").getFile());
         cfg.setObjectWrapper(new DefaultObjectWrapper());
         Template template = cfg.getTemplate("PrivCode.java.ftl");
-        Template jsTemplate = cfg.getTemplate("priv_code.ftl");
+        Template jsTemplate = cfg.getTemplate("priv_code.ftl.ftl");
+        Template implicitTemplate = cfg.getTemplate("freemarker_implicit.ftl.ftl");
 
         Map<String, Object> root = new HashMap<>();
 
@@ -75,6 +76,11 @@ public class PrivCodeGenerator {
         jsTemplate.process(root, jsWriter);
         jsWriter.flush();
         jsWriter.close();
+        // implicit
+        Writer implicitWriter = new FileWriter("src\\main\\resources\\ftl\\freemarker_implicit.ftl");
+        implicitTemplate.process(root, implicitWriter);
+        implicitWriter.flush();
+        implicitWriter.close();
     }
 
     public static Connection getConnection() throws Exception {
